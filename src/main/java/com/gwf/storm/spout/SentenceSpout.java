@@ -9,10 +9,13 @@ import backtype.storm.tuple.Values;
 import backtype.storm.utils.Utils;
 
 import java.util.Map;
+import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class SentenceSpout extends BaseRichSpout{
 
     private SpoutOutputCollector collector;
+    private ConcurrentHashMap<UUID,Values> pending;
     private String[] sentences = {
             "my dog has fleas",
             "i like cold beverages",
@@ -31,6 +34,7 @@ public class SentenceSpout extends BaseRichSpout{
     @Override
     public void open(Map map, TopologyContext topologyContext, SpoutOutputCollector spoutOutputCollector) {
         this.collector = spoutOutputCollector;
+        this.pending = new ConcurrentHashMap<>();
     }
 
     /**
@@ -39,8 +43,12 @@ public class SentenceSpout extends BaseRichSpout{
      */
     @Override
     public void nextTuple() {
+        Values values = new Values(sentences[index]);
+        UUID msdId = UUID.randomUUID();
+        //为每个tuple设置唯一标识
+        this.pending.put(msdId,values);
         //发射tuple
-        this.collector.emit(new Values(sentences[index]));
+        this.collector.emit(values,msdId);
         index++;
         if(index >= sentences.length){
             index = 0;
@@ -56,5 +64,24 @@ public class SentenceSpout extends BaseRichSpout{
     @Override
     public void declareOutputFields(OutputFieldsDeclarer outputFieldsDeclarer) {
         outputFieldsDeclarer.declare(new Fields("sentence"));
+    }
+
+    /**
+     * 下游bolt将tuple处理成功，会调用ack方法
+     * @param msgId
+     */
+    @Override
+    public void ack(Object msgId) {
+        this.pending.remove(msgId);
+    }
+
+    /**
+     * 下游bolt将tuple处理失败，会调用msgId方法
+     * @param msgId 每个tuple的唯一标识
+     */
+    @Override
+    public void fail(Object msgId) {
+        System.out.println("emit Fail,msgId : "+msgId);
+        this.collector.emit(this.pending.get(msgId),msgId);
     }
 }

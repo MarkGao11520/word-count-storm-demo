@@ -41,8 +41,13 @@ public class SplitSentenceBolt extends BaseRichBolt{
         //分发计数
         String[] words = sentence.split(" ");
         for(String word:words){
-            this.collector.emit(new Values(word));
+            //将当前要发射的tuple和接收的tuple锚定
+            this.collector.emit(tuple,new Values(word));
         }
+        //当前bolt将tuple处理成功，需要调用ack方法
+        this.collector.ack(tuple);
+        ////当前bolt将tuple处理失败，需要调用fail方法
+        this.collector.fail(tuple);
     }
 
     /**
