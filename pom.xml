@@ -6,15 +6,12 @@
 
     <groupId>com.gwf.storm</groupId>
     <artifactId>storm-demo</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.apache.storm</groupId>
-            <artifactId>storm-core</artifactId>
-            <version>0.9.1-incubating</version>
-        </dependency>
-    </dependencies>
+    <modules>
+        <module>word-count-topology</module>
+        <module>out-break-detection-topology</module>
+    </modules>
 
 
     <build>

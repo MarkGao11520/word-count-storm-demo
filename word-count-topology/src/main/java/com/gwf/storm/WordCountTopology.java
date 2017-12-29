@@ -4,10 +4,10 @@ import backtype.storm.Config;
 import backtype.storm.LocalCluster;
 import backtype.storm.topology.TopologyBuilder;
 import backtype.storm.tuple.Fields;
-import com.gwf.storm.bolt.ReportBolt;
 import com.gwf.storm.bolt.SplitSentenceBolt;
 import com.gwf.storm.bolt.WordCountBolt;
 import com.gwf.storm.spout.SentenceSpout;
+import com.gwf.storm.bolt.ReportBolt;
 
 public class WordCountTopology {
 
