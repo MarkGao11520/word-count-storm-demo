@@ -46,8 +46,8 @@ public class SplitSentenceBolt extends BaseRichBolt{
         }
         //当前bolt将tuple处理成功，需要调用ack方法
         this.collector.ack(tuple);
-        ////当前bolt将tuple处理失败，需要调用fail方法
-        this.collector.fail(tuple);
+        //当前bolt将tuple处理失败，需要调用fail方法
+        // this.collector.fail(tuple);
     }
 
     /**
