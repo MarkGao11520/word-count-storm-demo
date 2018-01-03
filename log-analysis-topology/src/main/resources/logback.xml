@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+    <appender name="KAFKA" class="com.gwf.log.KafkaAppender">
+        <topic>mytopic</topic>
+        <zookeeperHost>localhost:2181</zookeeperHost>
+        <formatter class="com.gwf.log.formatter.JsonFormatter">
+            <expectJson>false</expectJson>
+        </formatter>
+    </appender>
+
+    <root level="debug">
+        <appender-ref ref="KAFKA"/>
+    </root>
+</configuration>
