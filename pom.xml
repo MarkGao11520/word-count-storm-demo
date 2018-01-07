@@ -12,6 +12,7 @@
         <module>word-count-topology</module>
         <module>out-break-detection-topology</module>
         <module>log-analysis-topology</module>
+        <module>log-application</module>
     </modules>
 
 

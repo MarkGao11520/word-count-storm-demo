@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+    <!--配置自定义日志输出类-->
+    <appender name="KAFKA" class="com.gwf.log.KafkaAppender">
+        <topic>mytopic</topic>
+        <zookeeperHost>localhost:2181</zookeeperHost>
+        <brokerList>localhost:9092</brokerList>
+        <formatter class="com.gwf.log.formatter.JsonFormatter">
+            <expectJson>false</expectJson>
+        </formatter>
+    </appender>
+
+    <root level="debug">
+        <appender-ref ref="KAFKA"/>
+    </root>
+</configuration>

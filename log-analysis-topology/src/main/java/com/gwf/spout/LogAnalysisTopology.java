@@ -64,7 +64,7 @@ public class LogAnalysisTopology {
         BrokerHosts kafkaHosts = new StaticHosts(globalPartitionInformation);   //静态指定kafka主机
         // BrokerHosts brokerHosts = new ZkHosts("localhost:2181");  //从zookeeper中动态获取kafka主机
 
-        TridentKafkaConfig spoutConf = new TridentKafkaConfig(kafkaHosts,"log-analysis");
+        TridentKafkaConfig spoutConf = new TridentKafkaConfig(kafkaHosts,"mytopic");
         spoutConf.scheme = new SchemeAsMultiScheme(new StringScheme());
         spoutConf.startOffsetTime = -1;
         return spoutConf;
@@ -72,10 +72,10 @@ public class LogAnalysisTopology {
 
     public static void main(String[] args) throws AlreadyAliveException, InvalidTopologyException {
         Config conf = new Config();
-        conf.put(XMPPFunction.XMPP_USER,"1152057576@qq.com");
-        conf.put(XMPPFunction.XMPP_PASSWORD,"gaoFENG123");
-        conf.put(XMPPFunction.XMPP_SERVER,"qq.com");
-        conf.put(XMPPFunction.XMPP_TO,"2573088731@qq.com");
+//        conf.put(XMPPFunction.XMPP_USER,"1152057576@qq.com");
+//        conf.put(XMPPFunction.XMPP_PASSWORD,"gaoFENG123");
+//        conf.put(XMPPFunction.XMPP_SERVER,"qq.com");
+//        conf.put(XMPPFunction.XMPP_TO,"2573088731@qq.com");
 
         conf.setMaxSpoutPending(5);
         if(args.length == 0){
