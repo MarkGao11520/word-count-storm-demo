@@ -26,7 +26,7 @@ public class MovingAverageFuncation extends BaseFunction {
     public void execute(TridentTuple tridentTuple, TridentCollector tridentCollector) {
         // 更新当前的平均速率
         this.ewma.mark(tridentTuple.getLong(0));
-        LOG.debug("Rate: {}",this.ewma.getAverageRatePer(this.emitRatePer));
+        LOG.info("Rate: {}",this.ewma.getAverageRatePer(this.emitRatePer));
         // 发送当前的平均值
         tridentCollector.emit(new Values(this.ewma.getAverageRatePer(emitRatePer)));
     }

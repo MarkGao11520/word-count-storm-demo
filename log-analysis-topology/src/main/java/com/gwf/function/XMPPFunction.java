@@ -52,6 +52,6 @@ public class XMPPFunction extends BaseFunction{
 //        message.setBody(this.mapper.toMessageBody(tridentTuple));
 //        this.xmppConnection.sendPacket(message);
 
-        System.out.println(mapper.toMessageBody(tridentTuple));
+        LOG.info(mapper.toMessageBody(tridentTuple));
     }
 }
