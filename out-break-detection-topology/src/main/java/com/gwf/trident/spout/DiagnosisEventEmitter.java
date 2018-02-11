@@ -1,9 +1,9 @@
 package com.gwf.trident.spout;
 
 import com.gwf.trident.event.DiagnosisEvent;
-import storm.trident.operation.TridentCollector;
-import storm.trident.spout.ITridentSpout;
-import storm.trident.topology.TransactionAttempt;
+import org.apache.storm.trident.operation.TridentCollector;
+import org.apache.storm.trident.spout.ITridentSpout;
+import org.apache.storm.trident.topology.TransactionAttempt;
 
 import java.io.Serializable;
 import java.util.ArrayList;

@@ -1,8 +1,8 @@
-package com.gwf.trident.spout;
+package com.gwf.storm.stormai.spout;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.apache.storm.trident.spout.ITridentSpout;
+import storm.trident.spout.ITridentSpout;
 
 import java.io.Serializable;
 

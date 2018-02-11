@@ -1,11 +1,9 @@
 package com.gwf.trident.spout;
 
-import backtype.storm.spout.SpoutOutputCollector;
-import backtype.storm.task.TopologyContext;
-import backtype.storm.tuple.Fields;
-import storm.trident.spout.ITridentSpout;
+import org.apache.storm.task.TopologyContext;
+import org.apache.storm.tuple.Fields;
+import org.apache.storm.trident.spout.ITridentSpout;
 
-import java.math.BigDecimal;
 import java.util.Map;
 
 /**
@@ -13,7 +11,6 @@ import java.util.Map;
  */
 public class DiagnosisEventSpout implements ITridentSpout<Long>{
     private static final long serialVersionUID = -759614302465814707L;
-    SpoutOutputCollector collector;
     BatchCoordinator<Long> coordinator = new DefaultCoordinator();
     Emitter<Long> emitter = new DiagnosisEventEmitter();
 

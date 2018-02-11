@@ -31,7 +31,7 @@ public class EWMA implements Serializable {
     private long window;  //滑动窗口大小
     private long alphaWindow;
     private long last;  //记录上一次的时间
-    private double average;  //历史平均值
+    private double average;  //移动平均值
     private double alpha = -1D;  //平滑水平
     private boolean sliding = false;  //是否移动
 
@@ -65,8 +65,8 @@ public class EWMA implements Serializable {
     }
 
     /**
-     * 自定义alpha
-     * @see EWMA.mark()
+     * 作为一个alphaWindow窗口的函数
+     * alpha = 【1-Math.exp(-5d / 60d / alphaWindow)】
      * @param alphaWindow
      * @return
      */

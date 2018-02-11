@@ -1,16 +1,19 @@
 package com.gwf.storm.bolt;
 
-import backtype.storm.task.OutputCollector;
-import backtype.storm.task.TopologyContext;
-import backtype.storm.topology.OutputFieldsDeclarer;
-import backtype.storm.topology.base.BaseRichBolt;
-import backtype.storm.tuple.Tuple;
+import org.apache.storm.task.OutputCollector;
+import org.apache.storm.task.TopologyContext;
+import org.apache.storm.topology.OutputFieldsDeclarer;
+import org.apache.storm.topology.base.BaseRichBolt;
+import org.apache.storm.tuple.Tuple;
+import org.springframework.stereotype.Component;
 
 import java.util.*;
 
 /**
  * 实现上报bolt
+ * @author gaowenfeng
  */
+@Component
 public class ReportBolt extends BaseRichBolt {
     private HashMap<String,Long> counts = null;
 
@@ -24,6 +27,7 @@ public class ReportBolt extends BaseRichBolt {
         String word = tuple.getStringByField("word");
         Long count = tuple.getLongByField("count");
         this.counts.put(word,count);
+        System.out.println(word+" : "+count);
     }
 
     @Override

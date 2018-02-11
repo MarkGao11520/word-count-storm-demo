@@ -3,9 +3,9 @@ package com.gwf.trident.function;
 import com.gwf.trident.event.DiagnosisEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import storm.trident.operation.BaseFunction;
-import storm.trident.operation.TridentCollector;
-import storm.trident.tuple.TridentTuple;
+import org.apache.storm.trident.operation.BaseFunction;
+import org.apache.storm.trident.operation.TridentCollector;
+import org.apache.storm.trident.tuple.TridentTuple;
 
 import java.util.ArrayList;
 import java.util.HashMap;

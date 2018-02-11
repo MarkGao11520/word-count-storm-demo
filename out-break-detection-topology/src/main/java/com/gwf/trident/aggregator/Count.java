@@ -1,7 +1,7 @@
 package com.gwf.trident.aggregator;
 
-import storm.trident.operation.CombinerAggregator;
-import storm.trident.tuple.TridentTuple;
+import org.apache.storm.trident.operation.CombinerAggregator;
+import org.apache.storm.trident.tuple.TridentTuple;
 
 public class Count implements CombinerAggregator<Long>{
     private static final long serialVersionUID = -5346057794609578344L;

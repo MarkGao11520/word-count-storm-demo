@@ -1,9 +1,15 @@
 package com.gwf.trident;
 
-import backtype.storm.Config;
-import backtype.storm.LocalCluster;
-import backtype.storm.generated.StormTopology;
-import backtype.storm.tuple.Fields;
+import org.apache.storm.Config;
+import org.apache.storm.LocalCluster;
+import org.apache.storm.StormSubmitter;
+import org.apache.storm.generated.AlreadyAliveException;
+import org.apache.storm.generated.AuthorizationException;
+import org.apache.storm.generated.InvalidTopologyException;
+import org.apache.storm.generated.StormTopology;
+import org.apache.storm.trident.Stream;
+import org.apache.storm.trident.TridentTopology;
+import org.apache.storm.tuple.Fields;
 import com.gwf.trident.aggregator.Count;
 import com.gwf.trident.filter.DiseaseFilter;
 import com.gwf.trident.function.CityAssignment;
@@ -12,8 +18,6 @@ import com.gwf.trident.function.HourAssignment;
 import com.gwf.trident.function.OutbreakDetector;
 import com.gwf.trident.spout.DiagnosisEventSpout;
 import com.gwf.trident.state.OutbreakTrendFactory;
-import storm.trident.Stream;
-import storm.trident.TridentTopology;
 
 public class OutbreakDetectionTopology {
     public static StormTopology buildTopology(){
@@ -32,11 +36,12 @@ public class OutbreakDetectionTopology {
         return tridentTopology.build();
     }
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws InterruptedException, InvalidTopologyException, AuthorizationException, AlreadyAliveException {
         Config config = new Config();
-        LocalCluster cluster = new LocalCluster();
-        cluster.submitTopology("cdc",config,buildTopology());
-        Thread.sleep(200*1000);
-        cluster.shutdown();
+//        LocalCluster cluster = new LocalCluster();
+//        cluster.submitTopology("cdc",config,buildTopology());
+        StormSubmitter.submitTopology("cdc",config,buildTopology());
+//        Thread.sleep(200*1000);
+//        cluster.shutdown();
     }
 }
