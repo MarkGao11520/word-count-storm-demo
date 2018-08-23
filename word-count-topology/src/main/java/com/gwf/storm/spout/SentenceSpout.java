@@ -7,7 +7,6 @@ import org.apache.storm.topology.base.BaseRichSpout;
 import org.apache.storm.tuple.Fields;
 import org.apache.storm.tuple.Values;
 import org.apache.storm.utils.Utils;
-import org.springframework.stereotype.Component;
 
 import java.util.Map;
 import java.util.UUID;
@@ -16,7 +15,6 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * @author gaowenfeng
  */
-@Component
 public class SentenceSpout extends BaseRichSpout{
 
     private SpoutOutputCollector collector;

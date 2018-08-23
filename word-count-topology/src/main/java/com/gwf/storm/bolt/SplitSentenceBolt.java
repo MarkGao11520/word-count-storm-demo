@@ -7,15 +7,14 @@ import org.apache.storm.topology.base.BaseRichBolt;
 import org.apache.storm.tuple.Fields;
 import org.apache.storm.tuple.Tuple;
 import org.apache.storm.tuple.Values;
-import org.springframework.stereotype.Component;
 
+import java.io.IOException;
 import java.util.Map;
 
 /**
  * 实现语句分割bolt
  * @author gaowenfeng
  */
-@Component
 public class SplitSentenceBolt extends BaseRichBolt{
 
     private OutputCollector collector;
@@ -48,9 +47,12 @@ public class SplitSentenceBolt extends BaseRichBolt{
             this.collector.emit(tuple,new Values(word));
         }
         //当前bolt将tuple处理成功，需要调用ack方法
-        this.collector.ack(tuple);
+      //  this.collector.ack(tuple);
         //当前bolt将tuple处理失败，需要调用fail方法
-        // this.collector.fail(tuple);
+         this.collector.fail(tuple);
+     //   throw new RuntimeException("");
+
+
     }
 
     /**

@@ -5,7 +5,6 @@ import org.apache.storm.task.TopologyContext;
 import org.apache.storm.topology.OutputFieldsDeclarer;
 import org.apache.storm.topology.base.BaseRichBolt;
 import org.apache.storm.tuple.Tuple;
-import org.springframework.stereotype.Component;
 
 import java.util.*;
 
@@ -13,7 +12,6 @@ import java.util.*;
  * 实现上报bolt
  * @author gaowenfeng
  */
-@Component
 public class ReportBolt extends BaseRichBolt {
     private HashMap<String,Long> counts = null;
 

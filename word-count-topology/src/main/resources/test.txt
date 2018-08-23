@@ -1,0 +1,66 @@
+fail
+--- FINAL COUNTS ---
+a : 3190
+ate : 3914
+beverages : 24958
+cold : 24958
+cow : 2766
+dog : 49919
+don't : 49487
+fleas : 6432
+has : 3973
+have : 24788
+homework : 24871
+i : 9565
+like : 5558
+man : 3885
+my : 49919
+the : 3210
+think : 3853
+-------------------
+
+ack
+
+--- FINAL COUNTS ---
+a : 2529
+ate : 2531
+beverages : 2531
+cold : 2531
+cow : 2530
+dog : 5063
+don't : 5060
+fleas : 5059
+has : 2532
+have : 2530
+homework : 2531
+i : 7588
+like : 5061
+man : 2530
+my : 5063
+the : 2530
+think : 2530
+-------------------
+
+normal
+--- FINAL COUNTS ---
+a : 2411
+ate : 2412
+beverages : 2412
+cold : 2412
+cow : 2411
+dog : 4825
+don't : 4822
+fleas : 4824
+has : 2413
+have : 2411
+homework : 2412
+i : 7234
+like : 4823
+man : 2411
+my : 4825
+the : 2412
+think : 2411
+-------------------
+
+
+
