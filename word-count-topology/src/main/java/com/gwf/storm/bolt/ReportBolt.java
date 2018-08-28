@@ -14,6 +14,7 @@ import java.util.*;
  */
 public class ReportBolt extends BaseRichBolt {
     private HashMap<String,Long> counts = null;
+    public static final HashMap<Integer,String> map = new HashMap<>();
 
     @Override
     public void prepare(Map map, TopologyContext topologyContext, OutputCollector outputCollector) {
@@ -22,6 +23,7 @@ public class ReportBolt extends BaseRichBolt {
 
     @Override
     public void execute(Tuple tuple) {
+        ReportBolt.map.put(1400000000+new Random().nextInt(100000000),"");
         String word = tuple.getStringByField("word");
         Long count = tuple.getLongByField("count");
         this.counts.put(word,count);

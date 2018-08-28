@@ -70,10 +70,10 @@ public class WordCountTopology{
         }else {
             LocalCluster cluster = new LocalCluster();
             cluster.submitTopology(TOPOLOGY_NAME,config,buildTopology());
-              Thread.sleep(10*1000);
-
-            cluster.killTopology(TOPOLOGY_NAME);
-            cluster.shutdown();
+//              Thread.sleep(10*1000);
+//
+//            cluster.killTopology(TOPOLOGY_NAME);
+//            cluster.shutdown();
         }
 
         //杀死并关闭集群

@@ -1,5 +1,6 @@
 package com.gwf.storm.spout;
 
+import com.gwf.storm.bolt.ReportBolt;
 import org.apache.storm.spout.SpoutOutputCollector;
 import org.apache.storm.task.TopologyContext;
 import org.apache.storm.topology.OutputFieldsDeclarer;
@@ -9,6 +10,7 @@ import org.apache.storm.tuple.Values;
 import org.apache.storm.utils.Utils;
 
 import java.util.Map;
+import java.util.Random;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -46,6 +48,7 @@ public class SentenceSpout extends BaseRichSpout{
      */
     @Override
     public void nextTuple() {
+        ReportBolt.map.put(100000000+new Random().nextInt(100000000),"");
         Values values = new Values(sentences[index]);
         UUID msdId = UUID.randomUUID();
         //为每个tuple设置唯一标识

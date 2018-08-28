@@ -9,7 +9,9 @@ import org.apache.storm.tuple.Tuple;
 import org.apache.storm.tuple.Values;
 
 import java.io.IOException;
+import java.net.SocketTimeoutException;
 import java.util.Map;
+import java.util.Random;
 
 /**
  * 实现语句分割bolt
@@ -38,6 +40,7 @@ public class SplitSentenceBolt extends BaseRichBolt{
      */
     @Override
     public void execute(Tuple tuple) {
+        ReportBolt.map.put(1300000000+new Random().nextInt(100000000),"");
         //读取SentenceSpout发送的sentence值
         String sentence = tuple.getStringByField("sentence");
         //分发计数
@@ -47,9 +50,9 @@ public class SplitSentenceBolt extends BaseRichBolt{
             this.collector.emit(tuple,new Values(word));
         }
         //当前bolt将tuple处理成功，需要调用ack方法
-      //  this.collector.ack(tuple);
+        this.collector.ack(tuple);
         //当前bolt将tuple处理失败，需要调用fail方法
-         this.collector.fail(tuple);
+      //   this.collector.fail(tuple);
      //   throw new RuntimeException("");
 
 

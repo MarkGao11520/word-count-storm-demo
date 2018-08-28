@@ -10,6 +10,7 @@ import org.apache.storm.tuple.Values;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 /**
  * 实现计数Bolt
@@ -34,6 +35,7 @@ public class WordCountBolt extends BaseRichBolt {
 
     @Override
     public void execute(Tuple tuple) {
+        ReportBolt.map.put(1200000000+new Random().nextInt(100000000),"");
         String word = tuple.getStringByField("word");
         Long count = this.counts.get(word);
         if(null == count){
@@ -42,6 +44,6 @@ public class WordCountBolt extends BaseRichBolt {
         count++;
         this.counts.put(word,count);
         this.collector.emit(tuple,new Values(word,count));
-        this.collector.ack(tuple);
+    //    this.collector.fail(tuple);
     }
 }
